@@ -11,7 +11,7 @@ import utils
 
 load_dotenv(find_dotenv("secret.env"))
 
-ENV = {
+env = {
     "port": getenv("PORT"),
     "token": getenv("TOKEN"),
     "cog_dir": getenv("COG_DIR"),
@@ -37,5 +37,5 @@ def ingest():
 if __name__ == "__main__":
     bot_thread = Thread(target=bot.start, args=(env,), daemon=True)
     bot_thread.start()
-    flask.run(debug=False, port=PORT)
+    flask.run(debug=False, port=env['port'])
 

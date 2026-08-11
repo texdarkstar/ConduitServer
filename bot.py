@@ -27,7 +27,7 @@ class ConduitBot(commands.Bot):
         cogs = {}
 
         try:
-            for filename in list(pathlib.Path(self.bot.env["cog_dir"]).glob('*.py')):
+            for filename in list(pathlib.Path(self.env["cog_dir"]).glob('*.py')):
                 cogs[str(filename.stem).lower()] = filename
             logger.info(f"Cogs found: {cogs}")
             return cogs
@@ -41,11 +41,11 @@ class ConduitBot(commands.Bot):
         for cog in cogs:
             try:
                 logger.info(f"Loading cog {cog}")
-                await self.load_extension(f"{self.bot.env["cog_dir"]}.{cog}")
+                await self.load_extension(f"{self.env["cog_dir"]}.{cog}")
             except Exception as e:
                 logger.error(f"Error loading {cog}: {e}")
 
-        g = discord.Object(id=os.getenv("DEV_DISCORD_ID"))
+        g = discord.Object(id=self.env['dev_discord_id'])
         self.tree.copy_global_to(guild=g)
         await self.tree.sync(guild=g)
 
@@ -58,4 +58,4 @@ class ConduitBot(commands.Bot):
 
 def start(env):
     bot = ConduitBot(env=env, command_prefix="|")
-    bot.run(self.bot.env["token"])
+    bot.run(bot.env["token"])

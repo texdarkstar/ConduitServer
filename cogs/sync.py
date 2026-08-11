@@ -2,8 +2,6 @@ import discord
 from discord import Interaction, app_commands
 from discord.ext import commands
 import random
-from os import getenv
-
 
 
 
@@ -14,8 +12,9 @@ class Sync(commands.Cog):
 
     @app_commands.command(name="sync")
     async def sync(self, interaction: Interaction):
-        if interaction.user.id != self.bot.env["owner_id"]:
-            await interaction.response.send_message("You are not allowed to run that command")
+        print(self.bot.env["owner_id"])
+        if str(interaction.user.id) != str(self.bot.env["owner_id"]):
+            await interaction.response.send_message("You are not allowed to run that command", ephemeral=True)
             return
         guilds = self.bot.guilds
         for g in guilds:

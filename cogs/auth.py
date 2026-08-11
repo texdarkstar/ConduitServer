@@ -16,10 +16,10 @@ class Token(commands.Cog):
         token = "".join([random.choice("abcdefghijklmnopqrtuvwxyz0123456789") for i in range(8)])
 
         salt = bcrypt.gensalt()
-        hashed = bcryot.hashpw(token, salt)
+        hashed = bcrypt.hashpw(token.encode("utf-8"), salt)
         save_token(hashed)
 
-        await interaction.response.send_message("Your access token is **{token}**. Do not share this.", ephemeral=True)
+        await interaction.response.send_message(f"Your access token is **{token}**. Do not share this.", ephemeral=True)
 
 
 async def setup(bot):
