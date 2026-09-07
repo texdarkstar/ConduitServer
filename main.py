@@ -30,8 +30,10 @@ def ingest():
     if utils.authenticate(request):
         utils.ingest(json.loads(request.get_data().strip()))
 
-    return jsonify(statusCode=200)
+        return jsonify(statusCode=200)
 
+    else:
+        return jsonify(statuscode=403)
 
 
 if __name__ == "__main__":

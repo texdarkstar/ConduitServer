@@ -4,7 +4,7 @@ This is meant to all be configured to meet the end users needs.
 import bcrypt
 
 
-def save_token(token: bytes) -> None:
+def save_token(steamid: int, token: bytes) -> None:
     """Use this to save the hashed token somewhere for later reference"""
     pass
 
