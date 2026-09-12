@@ -31,7 +31,7 @@ def ingest(data: TelemetryData, credentials: HTTPAuthorizationCredentials = Depe
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Failed to authenticate token"
         )
-
+    utils.ingest(data)
 
 
 if __name__ == "__main__":

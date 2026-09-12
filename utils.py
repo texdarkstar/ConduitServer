@@ -3,13 +3,15 @@ This is meant to all be configured to meet the end users needs.
 """
 import bcrypt
 
+from schema import TelemetryData
+
 
 def save_token(steamid: int, token: bytes) -> None:
     """Use this to save the hashed token somewhere for later reference"""
     pass
 
 
-def ingest(data: str) -> None:
+def ingest(data: TelemetryData) -> None:
     """Use this to directly ingest data into a database"""
     pass
 
