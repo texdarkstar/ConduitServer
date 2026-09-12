@@ -3,18 +3,20 @@ This is meant to all be configured to meet the end users needs.
 """
 import bcrypt
 
+from schema import TelemetryData
 
-def save_token(token: bytes) -> None:
+
+def save_token(steamid: int, token: bytes) -> None:
     """Use this to save the hashed token somewhere for later reference"""
     pass
 
 
-def ingest(data: str) -> None:
+def ingest(data: TelemetryData) -> None:
     """Use this to directly ingest data into a database"""
     pass
 
 
-def authenticate(request) -> bool:
+def authenticate(token) -> bool:
     """Use this to authenticate the user. Use request.authentication.token for the token used.
         You can also use data from the json itself if you want, ie steam id"""
     # bcrypt.checkpw(request.authenticate.token, my_hashed_token.encode("utf-8")) -> bool
