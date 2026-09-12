@@ -14,7 +14,7 @@ def ingest(data: str) -> None:
     pass
 
 
-def authenticate(request) -> bool:
+def authenticate(token) -> bool:
     """Use this to authenticate the user. Use request.authentication.token for the token used.
         You can also use data from the json itself if you want, ie steam id"""
     # bcrypt.checkpw(request.authenticate.token, my_hashed_token.encode("utf-8")) -> bool
